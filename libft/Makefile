@@ -6,7 +6,7 @@
 #    By: ahmcherk <ahmcherk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/30 21:43:59 by ahmcherk          #+#    #+#              #
-#    Updated: 2019/07/29 23:06:48 by ahmcherk         ###   ########.fr        #
+#    Updated: 2019/07/30 18:42:43 by fkarouac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ SRC =	ft_atoi.c ft_bzero.c\
 		ft_memmove.c ft_memset.c\
 		ft_putchar.c ft_putchar_fd.c ft_putendl.c \
 		ft_putendl_fd.c ft_putnbr.c ft_putnbr_fd.c \
-		ft_putstr.c ft_putstr_fd.c\
-		ft_strcat.c get_next_line.c\
+		ft_putstr.c ft_putstr_fd.c ft_addnode.c\
+		ft_strcat.c get_next_line.c ft_newnode.c\
 		ft_strchr.c ft_strclr.c ft_strcmp.c ft_strcpy.c\
 		ft_strdel.c ft_strdup.c ft_strequ.c\
 		ft_striter.c ft_striteri.c ft_strjoin.c\
@@ -36,8 +36,8 @@ OBJ = 	ft_atoi.o ft_bzero.o\
 		ft_itoa.o ft_lstnew.o ft_sqrt.o\
 		ft_memalloc.o ft_memccpy.o\
 		ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memdel.o\
-		ft_memmove.o ft_memset.o\
-		ft_putchar.o ft_putchar_fd.o ft_putendl.o \
+		ft_memmove.o ft_memset.o ft_addnode.o\
+		ft_putchar.o ft_putchar_fd.o ft_putendl.o ft_newnode.o\
 		ft_putendl_fd.o ft_putnbr.o ft_putnbr_fd.o \
 		ft_putstr.o ft_putstr_fd.o\
 		ft_strcat.o get_next_line.o\
