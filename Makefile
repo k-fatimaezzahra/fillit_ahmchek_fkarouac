@@ -6,7 +6,7 @@
 #    By: fkarouac <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/30 18:45:37 by fkarouac          #+#    #+#              #
-#    Updated: 2019/07/30 18:52:51 by fkarouac         ###   ########.fr        #
+#    Updated: 2019/07/30 20:44:35 by ahmcherk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ $(NAME) :
 		gcc $(FLAGS) -o $(NAME) libft/libft.a
 
 clean : 
-		make -c clean libft
+		make clean -C libft
 
 fclean : clean
-		make -c fclean libft
+		make fclean -C libft
 		rm -rf $(NAME)
 
 re : fclean all
