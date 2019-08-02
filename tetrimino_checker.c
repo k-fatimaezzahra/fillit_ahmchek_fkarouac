@@ -6,7 +6,7 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 23:19:27 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/02 04:58:18 by fkarouac         ###   ########.fr       */
+/*   Updated: 2019/08/02 06:25:08 by ahmcherk         ###   ########.fr       */
 /*   Updated: 2019/08/02 01:30:21 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -26,7 +26,6 @@ int		char_counter(char *line, char	c)
 			j++;
 		i++;
 	}
-
 	return (j);
 }
 
@@ -49,38 +48,45 @@ int     file_reader (int fd,char **str)
 	ft_strdel(&tmp);
 	return (ret);
 }
+
 int		tetrimino_checker(int	fd)
 {
 	int		i;
+	int		j;
 	char	*str;
 
+	i = 0;
 	if (!(str = ft_strnew(0)))
 		return (-1);
-	while (file_reader(fd, &str))
+	while (file_reader(fd, &str) >= 0)
 	{
-		if ()
+		i = 0;
+		while (str[i + 4])
+		{
+			i = i + 4;
+			if (str[i] != '\n')
+			{
+				ft_putstr("bug is here :");
+				ft_putnbr(i);
+				ft_putchar('\n');
+				return (-1);
+			}
+			else
+				i++;
+			ft_putnbr(i);
+			ft_putchar('\n');
+		}
+		if (char_counter(str, '#') != 4 || char_counter(str, '.') != 12)
+			return (-1);
 	}
+	return (1);
 }
-
 
 int main ()
 {
 	int		fd;
-	int		a;
-	char	buf[3];
-
-	a = 0;
-	fd = open ("test", O_RDONLY);
-	while (read(fd, buf, 2))
-		a++;
-	if (buf[1] != '\n')
-	{
-		ft_putnbr(-1);
-		return(-1);
-	}
-	close (fd);
 	fd = open ("test", O_RDONLY);
 	ft_putnbr(tetrimino_checker(fd));
-	close (fd);
+	
 	return (0);
 }

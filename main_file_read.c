@@ -6,7 +6,7 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 00:24:54 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/02 03:05:23 by ahmcherk         ###   ########.fr       */
+/*   Updated: 2019/08/02 06:25:10 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int main(int ac, char **av)
 	while ((ret = file_reader(fd, &str)) >= 0)
 	{
 		ft_putstr(str);
+		ft_putnbr(char_counter(str, '\n'));
 	}
 	return (0);
 }
