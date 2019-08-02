@@ -6,7 +6,7 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 23:19:27 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/07/30 03:49:27 by ahmcherk         ###   ########.fr       */
+/*   Updated: 2019/07/30 19:38:34 by fkarouac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,26 @@ int		char_counter(char *line, char	c)
 	return (j);
 }
 
-/*int		file_reader ()
+int		file_reader (int fd, char *tetrimino)
 {
-
+	char	*tmp;
+	char	*line;
+	int		ret;
+    
+	if (!(tetrimino = malloc(sizeof( char * 21))))
+		return (-1);
+	tmp = tetrimino;
+	tetrimino = ft_strdup("\0");
+	ft_strdel(&tmp);
+	while ( ft_strlen(tetrimino) < 21 )
+	{	tmp = tetrimino;
+		ret = get_next_line(fd, &line);
+		tetrimino = ft_strjoin(tetrimino, line);
+		ft_strdel(&tmp);
+	}
+	return (ret);
 }
-*/
+
 int		tetrimino_checker(int	fd)
 {
 	char	*line;
@@ -63,6 +78,7 @@ int		tetrimino_checker(int	fd)
 	}
 	return (++k);
 }
+   
 
 int main ()
 {
