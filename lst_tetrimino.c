@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_newnode.c                                       :+:      :+:    :+:   */
+/*   lst_tetrimino.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fkarouac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 16:43:53 by fkarouac          #+#    #+#             */
-/*   Updated: 2019/07/30 18:43:27 by fkarouac         ###   ########.fr       */
+/*   Created: 2019/08/02 03:35:30 by ahmcherk          #+#    #+#             */
+/*   Updated: 2019/08/02 03:57:26 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-t_node	*ft_newnode(int x,int y, char *str)
+t_node  *ft_newnode(int x,int y, char *str)
 {
-	t_node	*node;
+	t_node  *node;
 
 	if (!(node = malloc(sizeof(t_node))))
 		return (NULL);
 	node->next = NULL;
 	if (!(node->str = malloc(sizeof(ft_strlen(str) + 1))))
-		return (NULL);
+	return (NULL);
 	node->x = x;
 	node->y = y;
 	node->str = ft_strcpy(node->str, str);
@@ -28,3 +28,7 @@ t_node	*ft_newnode(int x,int y, char *str)
 	return (node);
 }
 
+void	ft_addnode(t_node **list, t_node *new)
+{
+
+}

@@ -6,7 +6,7 @@
 /*   By: ahmcherk <ahmcherk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 19:27:06 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/07/30 18:55:00 by fkarouac         ###   ########.fr       */
+/*   Updated: 2019/08/02 03:32:00 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,6 @@ typedef struct  s_list
 		struct s_list   *next;
 }               t_list;
 
-typedef struct 	s_node
-{
-	int		x;
-	int		y;
-	char	*str;
-	struct s_node	*next;
-}				t_node;
-
-t_node			*ft_newnode(int x, int y, char *str);
-void			ft_addnode(t_node **list, t_node *new);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
