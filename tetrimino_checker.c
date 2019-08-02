@@ -6,7 +6,7 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 23:19:27 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/02 06:25:08 by ahmcherk         ###   ########.fr       */
+/*   Updated: 2019/08/02 06:41:29 by ahmcherk         ###   ########.fr       */
 /*   Updated: 2019/08/02 01:30:21 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -53,33 +53,26 @@ int		tetrimino_checker(int	fd)
 {
 	int		i;
 	int		j;
+	int		ret;
 	char	*str;
 
 	i = 0;
 	if (!(str = ft_strnew(0)))
 		return (-1);
-	while (file_reader(fd, &str) >= 0)
+	while ((ret = file_reader(fd, &str) >= 0))
 	{
 		i = 0;
-		while (str[i + 4])
+		while (str[i])
 		{
 			i = i + 4;
-			if (str[i] != '\n')
-			{
-				ft_putstr("bug is here :");
-				ft_putnbr(i);
-				ft_putchar('\n');
+			if (str[i] != '\n' && i <= 19)
 				return (-1);
-			}
-			else
-				i++;
-			ft_putnbr(i);
-			ft_putchar('\n');
+			i++;
 		}
 		if (char_counter(str, '#') != 4 || char_counter(str, '.') != 12)
 			return (-1);
 	}
-	return (1);
+	return (ret);
 }
 
 int main ()

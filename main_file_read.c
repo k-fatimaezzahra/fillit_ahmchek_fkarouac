@@ -6,7 +6,7 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 00:24:54 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/02 06:25:10 by ahmcherk         ###   ########.fr       */
+/*   Updated: 2019/08/02 06:43:02 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		file_reader (int fd,char **str)
      if (fd < 0 || fd > 4864)
 		 return (-1);
 	 ret = read(fd, line, 21);
-	 line[ret] = '\0';
+	 line[21] = '\0';
 	 if (!ret && line[19] != '\n')
 		 return (-1);
 	 if (line[20] != '\n' && line[20] != '\0')
