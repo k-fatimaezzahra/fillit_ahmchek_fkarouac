@@ -6,7 +6,8 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 23:19:27 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/07/30 19:38:34 by fkarouac         ###   ########.fr       */
+/*   Updated: 2019/08/02 04:58:18 by fkarouac         ###   ########.fr       */
+/*   Updated: 2019/08/02 01:30:21 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,56 +30,38 @@ int		char_counter(char *line, char	c)
 	return (j);
 }
 
-int		file_reader (int fd, char *tetrimino)
+int     file_reader (int fd,char **str)
 {
-	char	*tmp;
-	char	*line;
-	int		ret;
-    
-	if (!(tetrimino = malloc(sizeof( char * 21))))
+	char    line[22];
+	char    *tmp;
+	int     ret;
+
+	if (fd < 0 || fd > 4864)
 		return (-1);
-	tmp = tetrimino;
-	tetrimino = ft_strdup("\0");
+	ret = read(fd, line, 21);
+	line[ret] = '\0';
+	if (!ret && line[19] != '\n')
+		return (-1);
+	if (line[20] != '\n' && line[20] != '\0')
+		return (-1);
+	tmp = *str;
+	*str = ft_strdup(line);
 	ft_strdel(&tmp);
-	while ( ft_strlen(tetrimino) < 21 )
-	{	tmp = tetrimino;
-		ret = get_next_line(fd, &line);
-		tetrimino = ft_strjoin(tetrimino, line);
-		ft_strdel(&tmp);
-	}
 	return (ret);
 }
-
 int		tetrimino_checker(int	fd)
 {
-	char	*line;
 	int		i;
-	int		j;
-	int		k;
+	char	*str;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (get_next_line(fd, &line))
+	if (!(str = ft_strnew(0)))
+		return (-1);
+	while (file_reader(fd, &str))
 	{
-		if (line[0] == '\0' && ++k)
-		{
-			if (!(get_next_line(fd, &line)) ||
-				line[0] == '\0' || i != 4 || j != 4)
-				return (-1);
-			j = 0;
-			i = 0;
-		}
-		if ((char_counter(line ,'.') + char_counter(line,'#') != 4)
-			|| (ft_strlen(line) != 4))
-			return (-1);
-		j = j + char_counter(line, '#');
-		i++;
-		ft_strdel(&line);
+		if ()
 	}
-	return (++k);
 }
-   
+
 
 int main ()
 {
