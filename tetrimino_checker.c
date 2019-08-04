@@ -6,13 +6,14 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 23:19:27 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/02 06:41:29 by ahmcherk         ###   ########.fr       */
+/*   Updated: 2019/08/04 05:27:30 by ahmcherk         ###   ########.fr       */
 /*   Updated: 2019/08/02 01:30:21 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <fcntl.h>
+#include <stdio.h>
 int		char_counter(char *line, char	c)
 {
 	int		i;
@@ -35,12 +36,13 @@ int     file_reader (int fd,char **str)
 	char    *tmp;
 	int     ret;
 
+	ret = 0;
 	if (fd < 0 || fd > 4864)
 		return (-1);
 	ret = read(fd, line, 21);
-	line[ret] = '\0';
-	if (!ret && line[19] != '\n')
+	if (ret == 0 && line[20] == '\n')
 		return (-1);
+	line[ret] = '\0';
 	if (line[20] != '\n' && line[20] != '\0')
 		return (-1);
 	tmp = *str;
@@ -59,7 +61,7 @@ int		tetrimino_checker(int	fd)
 	i = 0;
 	if (!(str = ft_strnew(0)))
 		return (-1);
-	while ((ret = file_reader(fd, &str) >= 0))
+	while ((ret = file_reader(fd, &str)) > 0)
 	{
 		i = 0;
 		while (str[i])
@@ -78,8 +80,14 @@ int		tetrimino_checker(int	fd)
 int main ()
 {
 	int		fd;
+	char	*str;
+	int		ret;
+
+	str = ft_strnew(0);
 	fd = open ("test", O_RDONLY);
-	ft_putnbr(tetrimino_checker(fd));
+	printf("%d\n",tetrimino_checker(fd));
+	if (!ret && ret)
+	close (fd);
 	
 	return (0);
 }
