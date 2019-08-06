@@ -6,31 +6,29 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 03:35:30 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/02 04:19:15 by fkarouac         ###   ########.fr       */
+/*   Updated: 2019/08/06 05:57:13 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_node  *ft_newnode(int x,int y, char *str)
+t_node		*ft_newnode(int x, int y, char *str)
 {
-	t_node  *node;
+	t_node	*node;
 
-	if (!(node = malloc(sizeof(t_node))))
-		return (NULL);
-	node->next = NULL;
-	if (!(node->str = malloc(sizeof(ft_strlen(str) + 1))))
+	if (!(node = (t_node*)malloc(sizeof(t_node))))
 		return (NULL);
 	node->x = x;
 	node->y = y;
-	node->str = ft_strcpy(node->str, str);
+	node->str = ft_strdup(str);
 	node->next = NULL;
 	return (node);
 }
 
-void	ft_addnode(t_node **list, t_node *new)
+void		ft_addnode(t_node **list, t_node *new)
 {
 	t_node	*head;
+
 	head = *list;
 	if (*list || new)
 	{
@@ -40,5 +38,20 @@ void	ft_addnode(t_node **list, t_node *new)
 	}
 	if (head == NULL)
 		head = new;
+}
 
+void		ft_dellst(t_node **lst)
+{
+	t_node	*temp;
+
+	while ((*lst))
+	{
+		temp = (*lst)->next;
+		ft_strdel(&(*lst)->str);
+		free(*lst);
+		*lst = NULL;
+		(*lst) = temp;
+	}
+	free(temp);
+	temp = NULL;
 }

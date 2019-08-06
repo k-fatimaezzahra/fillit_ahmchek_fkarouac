@@ -5,16 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/29 23:19:27 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/04 05:27:30 by ahmcherk         ###   ########.fr       */
-/*   Updated: 2019/08/02 01:30:21 by ahmcherk         ###   ########.fr       */
+/*   Created: 2019/08/05 09:12:28 by ahmcherk          #+#    #+#             */
+/*   Updated: 2019/08/06 05:51:17 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <fcntl.h>
 #include <stdio.h>
-int		char_counter(char *line, char	c)
+
+int		char_counter(char *line, char c)
 {
 	int		i;
 	int		j;
@@ -30,14 +29,14 @@ int		char_counter(char *line, char	c)
 	return (j);
 }
 
-int     file_reader (int fd,char **str)
+int		file_reader(int fd, char **str)
 {
-	char    line[22];
-	char    *tmp;
-	int     ret;
+	char	line[22];
+	char	*tmp;
+	int		ret;
 
 	ret = 0;
-	if (fd < 0 || fd > 4864)
+	if (fd < 0)
 		return (-1);
 	ret = read(fd, line, 21);
 	if (ret == 0 && line[20] == '\n')
@@ -45,13 +44,11 @@ int     file_reader (int fd,char **str)
 	line[ret] = '\0';
 	if (line[20] != '\n' && line[20] != '\0')
 		return (-1);
-	tmp = *str;
 	*str = ft_strdup(line);
-	ft_strdel(&tmp);
 	return (ret);
 }
 
-int		tetrimino_checker(int	fd)
+int		tetrimino_checker(int fd, t_node **start)
 {
 	int		i;
 	int		j;
@@ -59,8 +56,6 @@ int		tetrimino_checker(int	fd)
 	char	*str;
 
 	i = 0;
-	if (!(str = ft_strnew(0)))
-		return (-1);
 	while ((ret = file_reader(fd, &str)) > 0)
 	{
 		i = 0;
@@ -73,21 +68,10 @@ int		tetrimino_checker(int	fd)
 		}
 		if (char_counter(str, '#') != 4 || char_counter(str, '.') != 12)
 			return (-1);
+		if (*start == NULL)
+			*start = ft_newnode(0, 0, str);
+		else
+			ft_addnode(start, ft_newnode(0, 0, str));
 	}
 	return (ret);
-}
-
-int main ()
-{
-	int		fd;
-	char	*str;
-	int		ret;
-
-	str = ft_strnew(0);
-	fd = open ("test", O_RDONLY);
-	printf("%d\n",tetrimino_checker(fd));
-	if (!ret && ret)
-	close (fd);
-	
-	return (0);
 }

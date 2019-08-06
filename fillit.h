@@ -6,13 +6,14 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:45:52 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/02 05:28:36 by ahmcherk         ###   ########.fr       */
+/*   Updated: 2019/08/06 05:44:13 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _FILLIT_H
 # define _FILLIT_H
 # include "./libft/libft.h"
+# include <fcntl.h>
 
   typedef struct  s_node
  {
@@ -21,8 +22,10 @@
 	 char    *str;
 	 struct s_node   *next;
 }               t_node;
-t_node	*ft_newmode(int	x, int	y, char *str);
+t_node	*ft_newnode(int	x, int	y, char *str);
 void	ft_addnode(t_node	**list, t_node	*new);
 int     char_counter(char *line, char   c);
+void	ft_dellst(t_node **lst);
+int     tetrimino_checker(int fd, t_node **start);
 #endif
 
