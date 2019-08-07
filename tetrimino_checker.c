@@ -6,7 +6,7 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 09:12:28 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/06 05:51:17 by ahmcherk         ###   ########.fr       */
+/*   Updated: 2019/08/06 12:16:40 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,24 @@ int		file_reader(int fd, char **str)
 	return (ret);
 }
 
+int		cnx_checker(char *str)
+{
+	int		i;
+	int		signal;
+
+	i = 0;
+	signal = 0;
+	while (str[i])
+	{
+		if (str[i] == str[i + 5] && (i + 5) <= ft_strlen(str))
+			signal = signal + 2;
+		i++;
+	}
+	if (signal == 6 || signal == 8)
+		return (1);
+	return (0);
+}
+
 int		tetrimino_checker(int fd, t_node **start)
 {
 	int		i;
@@ -66,7 +84,8 @@ int		tetrimino_checker(int fd, t_node **start)
 				return (-1);
 			i++;
 		}
-		if (char_counter(str, '#') != 4 || char_counter(str, '.') != 12)
+		if (char_counter(str, '#') != 4 || char_counter(str, '.') != 12
+				/*|| !cnx_checker(str)*/)
 			return (-1);
 		if (*start == NULL)
 			*start = ft_newnode(0, 0, str);

@@ -6,7 +6,7 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 23:11:34 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/06 05:45:51 by ahmcherk         ###   ########.fr       */
+/*   Updated: 2019/08/06 12:13:47 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@ int		main(int ac, char **av)
 	if (ac == 2)
 	{
 		fd = open(av[1], O_RDONLY);
-		tetrimino_checker(fd, &start);
+		ft_putnbr(tetrimino_checker(fd, &start));
+		ft_putchar('\n');
 		list = start;
 		while (list)
 		{
 			ft_putstr(list->str);
 			list = list->next;
 		}
-		ft_dellst(&start);
+	//	ft_dellst(&list);
 		close (fd);
 	}
 }

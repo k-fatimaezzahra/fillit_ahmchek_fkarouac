@@ -6,7 +6,7 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 22:45:52 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/06 05:44:13 by ahmcherk         ###   ########.fr       */
+/*   Updated: 2019/08/06 08:39:46 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ void	ft_addnode(t_node	**list, t_node	*new);
 int     char_counter(char *line, char   c);
 void	ft_dellst(t_node **lst);
 int     tetrimino_checker(int fd, t_node **start);
+int     char_counter(char *line, char c);
+char    **map_creator(t_node **list);
 #endif
 
