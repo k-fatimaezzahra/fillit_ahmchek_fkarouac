@@ -6,7 +6,7 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 09:12:28 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/07 17:11:36 by ahmcherk         ###   ########.fr       */
+/*   Updated: 2019/08/07 18:17:21 by fkarouac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int		char_counter(char *line, char c)
 int		file_reader(int fd, char **str)
 {
 	char	line[22];
-	char	*tmp;
 	int		ret;
 
 	ret = 0;
@@ -57,9 +56,9 @@ int		cnx_checker(char *str)
 	signal = 0;
 	while (str[i])
 	{
-		if (str[i] == '#' && str[i + 5] == '#' && (i + 5) <= ft_strlen(str))
+		if (str[i] == '#' && str[i + 5] == '#' && (i + 5) <= (int)ft_strlen(str))
 			signal = signal + 2;
-		if (str[i] == '#' && str[i + 1] == '#' && (i + 1) <= ft_strlen(str))
+		if (str[i] == '#' && str[i + 1] == '#' && (i + 1) <= (int)ft_strlen(str))
 			signal = signal + 2;
 		i++;
 	}
@@ -74,7 +73,6 @@ int		cnx_checker(char *str)
 int		tetrimino_checker(int fd, t_node **start)
 {
 	int		i;
-	int		j;
 	int		ret;
 	char	*str;
 
