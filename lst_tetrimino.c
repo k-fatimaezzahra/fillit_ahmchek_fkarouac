@@ -6,7 +6,7 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 03:35:30 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/06 12:13:31 by ahmcherk         ###   ########.fr       */
+/*   Updated: 2019/08/07 17:13:29 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		ft_dellst(t_node **lst)
 	while ((*lst))
 	{
 		temp = (*lst)->next;
-		ft_strdel(&(*lst)->str);
+		//ft_strdel(&(*lst)->str);
 		free(*lst);
 		*lst = NULL;
 		(*lst) = temp;

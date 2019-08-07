@@ -6,7 +6,7 @@
 /*   By: ahmcherk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 23:11:34 by ahmcherk          #+#    #+#             */
-/*   Updated: 2019/08/06 12:13:47 by ahmcherk         ###   ########.fr       */
+/*   Updated: 2019/08/07 17:16:20 by ahmcherk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		main(int ac, char **av)
 			ft_putstr(list->str);
 			list = list->next;
 		}
-	//	ft_dellst(&list);
+		ft_dellst(&start);
 		close (fd);
 	}
 }
