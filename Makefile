@@ -6,7 +6,7 @@
 #    By: fkarouac <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/30 18:45:37 by fkarouac          #+#    #+#              #
-#    Updated: 2019/07/30 20:44:35 by ahmcherk         ###   ########.fr        #
+#    Updated: 2019/08/09 15:56:45 by ahmcherk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ all : $(NAME)
 
 $(NAME) :
 		make -C libft
-		gcc $(FLAGS) -o $(NAME) libft/libft.a
+		gcc $(FLAGS) -o $(NAME) $(SRC) libft/libft.a
 
 clean : 
 		make clean -C libft

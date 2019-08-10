@@ -1,0 +1,394 @@
+==2903== Memcheck, a memory error detector
+==2903== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2903== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==2903== Command: ./a.out test
+==2903== Parent PID: 971
+==2903== 
+--2903-- 
+--2903-- Valgrind options:
+--2903--    --leak-check=full
+--2903--    --show-leak-kinds=all
+--2903--    --track-origins=yes
+--2903--    --verbose
+--2903--    --log-file=valgrind-out.txt
+--2903-- Output from sysctl({CTL_KERN,KERN_VERSION}):
+--2903--   Darwin Kernel Version 16.7.0: Thu Jun 21 20:07:39 PDT 2018; root:xnu-3789.73.14~1/RELEASE_X86_64
+--2903-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--2903-- Page sizes: currently 4096, max supported 4096
+--2903-- Valgrind library directory: /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind
+--2903-- ./a.out (rx at 0x100000000, rw at 0x100001000)
+--2903--    reading syms   from primary file (15 0)
+--2903--    dSYM= ./a.out.dSYM/Contents/Resources/DWARF/a.out
+--2903-- /usr/lib/dyld (rx at 0x100003000, rw at 0x100041000)
+--2903--    reading syms   from primary file (6 1223)
+--2903-- Scheduler: using generic scheduler lock implementation.
+--2903-- Reading suppressions file: /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/default.supp
+==2903== embedded gdbserver: reading from /var/folders/zz/zyxvpxvq6csfxvn_n00007kw0001wq/T//vgdb-pipe-from-vgdb-to-2903-by-ahmcherk-on-???
+==2903== embedded gdbserver: writing to   /var/folders/zz/zyxvpxvq6csfxvn_n00007kw0001wq/T//vgdb-pipe-to-vgdb-from-2903-by-ahmcherk-on-???
+==2903== embedded gdbserver: shared mem   /var/folders/zz/zyxvpxvq6csfxvn_n00007kw0001wq/T//vgdb-pipe-shared-mem-vgdb-2903-by-ahmcherk-on-???
+==2903== 
+==2903== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==2903== don't want to do, unless you know exactly what you're doing,
+==2903== or are doing some strange experiment):
+==2903==   /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/../../bin/vgdb --pid=2903 ...command...
+==2903== 
+==2903== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==2903==   /path/to/gdb ./a.out
+==2903== and then give GDB the following command
+==2903==   target remote | /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/../../bin/vgdb --pid=2903
+==2903== --pid is optional if only one valgrind process is running
+==2903== 
+--2903-- REDIR: 0x100029620 (dyld:strcmp) redirected to 0x25805895d (???)
+--2903-- REDIR: 0x100023130 (dyld:arc4random) redirected to 0x2580589fb (???)
+--2903-- REDIR: 0x100022fe0 (dyld:strlen) redirected to 0x25805892c (???)
+--2903-- REDIR: 0x100022f40 (dyld:strcpy) redirected to 0x258058979 (???)
+--2903-- REDIR: 0x1000267dd (dyld:strcat) redirected to 0x25805893d (???)
+--2903-- REDIR: 0x10002681b (dyld:strlcat) redirected to 0x258058996 (???)
+--2903-- /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_core-amd64-darwin.so (rx at 0x10008e000, rw at 0x100094000)
+--2903--    reading syms   from primary file (3 88)
+--2903--    dSYM= /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_core-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_core-amd64-darwin.so
+--2903-- /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so (rx at 0x100098000, rw at 0x1000a1000)
+--2903--    reading syms   from primary file (72 96)
+--2903--    dSYM= /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_memcheck-amd64-darwin.so
+--2903-- /usr/lib/libSystem.B.dylib (rx at 0x1000a7000, rw at 0x1000a9000)
+--2903--    reading syms   from primary file (31 5)
+--2903-- /usr/lib/system/libcache.dylib (rx at 0x1000ae000, rw at 0x1000b3000)
+--2903--    reading syms   from primary file (32 29)
+--2903-- /usr/lib/system/libcommonCrypto.dylib (rx at 0x1000b8000, rw at 0x1000c3000)
+--2903--    reading syms   from primary file (214 167)
+--2903-- /usr/lib/system/libcompiler_rt.dylib (rx at 0x1000d0000, rw at 0x1000d8000)
+--2903--    reading syms   from primary file (510 8)
+--2903-- /usr/lib/system/libcopyfile.dylib (rx at 0x1000e5000, rw at 0x1000ee000)
+--2903--    reading syms   from primary file (13 35)
+--2903-- /usr/lib/system/libcorecrypto.dylib (rx at 0x1000f4000, rw at 0x100178000)
+--2903--    reading syms   from primary file (479 678)
+--2903-- /usr/lib/system/libdispatch.dylib (rx at 0x100193000, rw at 0x1001c5000)
+--2903--    reading syms   from primary file (258 910)
+--2903-- /usr/lib/system/libdyld.dylib (rx at 0x1001fe000, rw at 0x100204000)
+--2903--    reading syms   from primary file (98 130)
+--2903-- /usr/lib/system/libkeymgr.dylib (rx at 0x10020c000, rw at 0x10020d000)
+--2903--    reading syms   from primary file (12 3)
+--2903-- /usr/lib/system/liblaunch.dylib (rx at 0x100211000, rw at 0x100212000)
+--2903--    reading syms   from primary file (113 3)
+--2903-- /usr/lib/system/libmacho.dylib (rx at 0x100219000, rw at 0x10021f000)
+--2903--    reading syms   from primary file (102 1)
+--2903-- /usr/lib/system/libquarantine.dylib (rx at 0x100225000, rw at 0x100228000)
+--2903--    reading syms   from primary file (67 32)
+--2903-- /usr/lib/system/libremovefile.dylib (rx at 0x10022e000, rw at 0x100230000)
+--2903--    reading syms   from primary file (15 4)
+--2903-- /usr/lib/system/libsystem_asl.dylib (rx at 0x100235000, rw at 0x10024e000)
+--2903--    reading syms   from primary file (222 224)
+--2903-- /usr/lib/system/libsystem_blocks.dylib (rx at 0x10025b000, rw at 0x10025c000)
+--2903--    reading syms   from primary file (21 6)
+--2903-- /usr/lib/system/libsystem_c.dylib (rx at 0x100260000, rw at 0x1002ee000)
+--2903--    reading syms   from primary file (1331 777)
+--2903-- /usr/lib/system/libsystem_configuration.dylib (rx at 0x100315000, rw at 0x100319000)
+--2903--    reading syms   from primary file (38 75)
+--2903-- /usr/lib/system/libsystem_coreservices.dylib (rx at 0x100320000, rw at 0x100324000)
+--2903--    reading syms   from primary file (14 36)
+--2903-- /usr/lib/system/libsystem_coretls.dylib (rx at 0x100329000, rw at 0x100342000)
+--2903--    reading syms   from primary file (130 250)
+--2903-- /usr/lib/system/libsystem_dnssd.dylib (rx at 0x10034d000, rw at 0x100354000)
+--2903--    reading syms   from primary file (49 24)
+--2903-- /usr/lib/system/libsystem_info.dylib (rx at 0x100359000, rw at 0x100383000)
+--2903--    reading syms   from primary file (523 519)
+--2903-- /usr/lib/system/libsystem_kernel.dylib (rx at 0x100398000, rw at 0x1003bb000)
+--2903--    reading syms   from primary file (1179 98)
+--2903-- /usr/lib/system/libsystem_m.dylib (rx at 0x1003d2000, rw at 0x10041a000)
+--2903--    reading syms   from primary file (605 1)
+--2903-- /usr/lib/system/libsystem_malloc.dylib (rx at 0x100426000, rw at 0x100445000)
+--2903--    reading syms   from primary file (117 253)
+--2903-- /usr/lib/system/libsystem_network.dylib (rx at 0x100451000, rw at 0x1004ab000)
+--2903--    reading syms   from primary file (730 584)
+--2903-- /usr/lib/system/libsystem_networkextension.dylib (rx at 0x1004cd000, rw at 0x1004d7000)
+--2903--    reading syms   from primary file (89 229)
+--2903-- /usr/lib/system/libsystem_notify.dylib (rx at 0x1004e2000, rw at 0x1004ec000)
+--2903--    reading syms   from primary file (113 54)
+--2903-- /usr/lib/system/libsystem_platform.dylib (rx at 0x1004f3000, rw at 0x1004fc000)
+--2903--    reading syms   from primary file (158 105)
+--2903-- /usr/lib/system/libsystem_pthread.dylib (rx at 0x100504000, rw at 0x10050f000)
+--2903--    reading syms   from primary file (174 79)
+--2903-- /usr/lib/system/libsystem_sandbox.dylib (rx at 0x10051b000, rw at 0x10051f000)
+--2903--    reading syms   from primary file (85 9)
+--2903-- /usr/lib/system/libsystem_secinit.dylib (rx at 0x100525000, rw at 0x100527000)
+--2903--    reading syms   from primary file (1 7)
+--2903-- /usr/lib/system/libsystem_symptoms.dylib (rx at 0x10052c000, rw at 0x100534000)
+--2903--    reading syms   from primary file (8 66)
+--2903-- /usr/lib/system/libsystem_trace.dylib (rx at 0x10053a000, rw at 0x10054e000)
+--2903--    reading syms   from primary file (101 236)
+--2903-- /usr/lib/system/libunwind.dylib (rx at 0x10055c000, rw at 0x100562000)
+--2903--    reading syms   from primary file (102 52)
+--2903-- /usr/lib/system/libxpc.dylib (rx at 0x100569000, rw at 0x100593000)
+--2903--    reading syms   from primary file (515 825)
+--2903-- /usr/lib/libobjc.A.dylib (rx at 0x1005b2000, rw at 0x100985000)
+--2903--    reading syms   from primary file (368 886)
+--2903-- /usr/lib/libc++abi.dylib (rx at 0x100a62000, rw at 0x100a8c000)
+--2903--    reading syms   from primary file (339 188)
+--2903-- /usr/lib/libc++.1.dylib (rx at 0x100a9b000, rw at 0x100af2000)
+--2903--    reading syms   from primary file (1979 1610)
+--2903-- REDIR: 0x1004f4680 (libsystem_platform.dylib:_platform_memchr$VARIANT$Haswell) redirected to 0x10009b154 (_platform_memchr$VARIANT$Haswell)
+--2903-- REDIR: 0x1004f4760 (libsystem_platform.dylib:_platform_memcmp) redirected to 0x10009b849 (_platform_memcmp)
+--2903-- REDIR: 0x1004f4cc0 (libsystem_platform.dylib:_platform_strncmp) redirected to 0x10009b055 (_platform_strncmp)
+--2903-- REDIR: 0x100261b40 (libsystem_c.dylib:strlen) redirected to 0x10009ace6 (strlen)
+--2903-- REDIR: 0x1004f5280 (libsystem_platform.dylib:_platform_strcmp) redirected to 0x10009b0d1 (_platform_strcmp)
+--2903-- REDIR: 0x10042ad61 (libsystem_malloc.dylib:calloc) redirected to 0x100099bcf (calloc)
+--2903-- REDIR: 0x10042a3dc (libsystem_malloc.dylib:malloc_default_zone) redirected to 0x10009a911 (malloc_default_zone)
+--2903-- REDIR: 0x100428217 (libsystem_malloc.dylib:malloc_zone_malloc) redirected to 0x10009981b (malloc_zone_malloc)
+--2903-- REDIR: 0x10042a3e7 (libsystem_malloc.dylib:malloc_zone_calloc) redirected to 0x100099dbd (malloc_zone_calloc)
+--2903-- REDIR: 0x1004271e8 (libsystem_malloc.dylib:malloc) redirected to 0x1000995b0 (malloc)
+--2903-- REDIR: 0x10042a4af (libsystem_malloc.dylib:malloc_zone_from_ptr) redirected to 0x10009a952 (malloc_zone_from_ptr)
+--2903-- REDIR: 0x100429dd5 (libsystem_malloc.dylib:free) redirected to 0x100099991 (free)
+--2903-- REDIR: 0x1004f4ea0 (libsystem_platform.dylib:_platform_strchr$VARIANT$Haswell) redirected to 0x10009abb6 (_platform_strchr$VARIANT$Haswell)
+--2903-- REDIR: 0x10042af10 (libsystem_malloc.dylib:realloc) redirected to 0x100099f51 (realloc)
+==2903== Invalid read of size 1
+==2903==    at 0x1000009A8: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903==  Address 0x100b59cc8 is 2 bytes after a block of size 22 alloc'd
+==2903==    at 0x100099626: malloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x100000E6C: ft_strdup (in ./a.out)
+==2903==    by 0x1000007D6: file_reader (in ./a.out)
+==2903==    by 0x100000971: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903== 
+==2903== Invalid read of size 1
+==2903==    at 0x10000098D: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903==  Address 0x100b59cc9 is 3 bytes after a block of size 22 alloc'd
+==2903==    at 0x100099626: malloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x100000E6C: ft_strdup (in ./a.out)
+==2903==    by 0x1000007D6: file_reader (in ./a.out)
+==2903==    by 0x100000971: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903== 
+==2903== Conditional jump or move depends on uninitialised value(s)
+==2903==    at 0x100000A39: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903==  Uninitialised value was created by a stack allocation
+==2903==    at 0x100004036: _dyld_start (in /usr/lib/dyld)
+==2903== 
+==2903== Conditional jump or move depends on uninitialised value(s)
+==2903==    at 0x10000078C: file_reader (in ./a.out)
+==2903==    by 0x100000971: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903==  Uninitialised value was created by a stack allocation
+==2903==    at 0x100000720: file_reader (in ./a.out)
+==2903== 
+==2903== Conditional jump or move depends on uninitialised value(s)
+==2903==    at 0x1000007A5: file_reader (in ./a.out)
+==2903==    by 0x100000971: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903==  Uninitialised value was created by a stack allocation
+==2903==    at 0x100000720: file_reader (in ./a.out)
+==2903== 
+==2903== Conditional jump or move depends on uninitialised value(s)
+==2903==    at 0x1000007B2: file_reader (in ./a.out)
+==2903==    by 0x100000971: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903==  Uninitialised value was created by a stack allocation
+==2903==    at 0x100000720: file_reader (in ./a.out)
+==2903== 
+==2903== 
+==2903== HEAP SUMMARY:
+==2903==     in use at exit: 18,347 bytes in 173 blocks
+==2903==   total heap usage: 194 allocs, 21 frees, 24,611 bytes allocated
+==2903== 
+==2903== Searching for pointers to 173 not-freed blocks
+==2903== Checked 9,919,680 bytes
+==2903== 
+==2903== 22 bytes in 1 blocks are definitely lost in loss record 3 of 45
+==2903==    at 0x100099626: malloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x100000E6C: ft_strdup (in ./a.out)
+==2903==    by 0x100000AF7: ft_newnode (in ./a.out)
+==2903==    by 0x100000A4D: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903== 
+==2903== 24 bytes in 1 blocks are still reachable in loss record 4 of 45
+==2903==    at 0x10009989E: malloc_zone_malloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x1005B58A6: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B5878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B4350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B4062: sel_init (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B39CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==2903==    by 0x100008255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==2903==    by 0x10020100A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==2903==    by 0x1005B3074: _objc_init (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x10019468D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==2903== 
+==2903== 32 bytes in 1 blocks are still reachable in loss record 9 of 45
+==2903==    at 0x10009989E: malloc_zone_malloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x1005B59FE: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B59CE: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B58CE: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B5878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B4350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B4062: sel_init (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B39CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==2903==    by 0x100008255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==2903==    by 0x10020100A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==2903== 
+==2903== 32 bytes in 1 blocks are still reachable in loss record 10 of 45
+==2903==    at 0x10009989E: malloc_zone_malloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x1005B5A1F: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B59CE: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B58CE: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B5878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B4350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B4062: sel_init (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B39CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==2903==    by 0x100008255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==2903==    by 0x10020100A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==2903== 
+==2903== 32 bytes in 1 blocks are still reachable in loss record 11 of 45
+==2903==    at 0x100099626: malloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x1005B5AE3: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B59CE: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B58CE: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B5878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B4350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B4062: sel_init (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B39CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==2903==    by 0x100008255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==2903==    by 0x10020100A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==2903== 
+==2903== 32 bytes in 1 blocks are still reachable in loss record 12 of 45
+==2903==    at 0x100099626: malloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x1005B5934: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B5878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B4350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B4062: sel_init (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B39CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==2903==    by 0x100008255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==2903==    by 0x10020100A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==2903==    by 0x1005B3074: _objc_init (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x10019468D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==2903== 
+==2903== 48 bytes in 1 blocks are still reachable in loss record 16 of 45
+==2903==    at 0x100099E4D: malloc_zone_calloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x1005B5EC6: _NXHashRehashToCapacity (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B5E50: NXHashInsert (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B5B0D: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B59CE: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B58CE: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B5878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B4350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B4062: sel_init (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005B39CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==2903== 
+==2903== 72 bytes in 3 blocks are possibly lost in loss record 27 of 45
+==2903==    at 0x100099C8A: calloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x1005B3846: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x1005C6FE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x10000803B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==2903==    by 0x100008255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==2903==    by 0x10020100A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==2903==    by 0x1005B3074: _objc_init (in /usr/lib/libobjc.A.dylib)
+==2903==    by 0x10019468D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==2903==    by 0x10019463A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==2903==    by 0x1000A89D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==2903==    by 0x100018A1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==2903==    by 0x100018C1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==2903== 
+==2903== 87 bytes in 4 blocks are definitely lost in loss record 28 of 45
+==2903==    at 0x100099626: malloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x100000E6C: ft_strdup (in ./a.out)
+==2903==    by 0x100000AF7: ft_newnode (in ./a.out)
+==2903==    by 0x100000A70: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903== 
+==2903== 110 bytes in 6 blocks are definitely lost in loss record 29 of 45
+==2903==    at 0x100099626: malloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x100000E6C: ft_strdup (in ./a.out)
+==2903==    by 0x1000007D6: file_reader (in ./a.out)
+==2903==    by 0x100000971: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903== 
+==2903== LEAK SUMMARY:
+==2903==    definitely lost: 219 bytes in 11 blocks
+==2903==    indirectly lost: 0 bytes in 0 blocks
+==2903==      possibly lost: 72 bytes in 3 blocks
+==2903==    still reachable: 200 bytes in 6 blocks
+==2903==         suppressed: 17,856 bytes in 153 blocks
+==2903== 
+==2903== ERROR SUMMARY: 16 errors from 10 contexts (suppressed: 12 from 12)
+==2903== 
+==2903== 1 errors in context 1 of 10:
+==2903== Conditional jump or move depends on uninitialised value(s)
+==2903==    at 0x1000007B2: file_reader (in ./a.out)
+==2903==    by 0x100000971: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903==  Uninitialised value was created by a stack allocation
+==2903==    at 0x100000720: file_reader (in ./a.out)
+==2903== 
+==2903== 
+==2903== 1 errors in context 2 of 10:
+==2903== Conditional jump or move depends on uninitialised value(s)
+==2903==    at 0x1000007A5: file_reader (in ./a.out)
+==2903==    by 0x100000971: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903==  Uninitialised value was created by a stack allocation
+==2903==    at 0x100000720: file_reader (in ./a.out)
+==2903== 
+==2903== 
+==2903== 1 errors in context 3 of 10:
+==2903== Conditional jump or move depends on uninitialised value(s)
+==2903==    at 0x10000078C: file_reader (in ./a.out)
+==2903==    by 0x100000971: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903==  Uninitialised value was created by a stack allocation
+==2903==    at 0x100000720: file_reader (in ./a.out)
+==2903== 
+==2903== 
+==2903== 1 errors in context 4 of 10:
+==2903== Conditional jump or move depends on uninitialised value(s)
+==2903==    at 0x100000A39: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903==  Uninitialised value was created by a stack allocation
+==2903==    at 0x100004036: _dyld_start (in /usr/lib/dyld)
+==2903== 
+==2903== 
+==2903== 4 errors in context 5 of 10:
+==2903== Invalid read of size 1
+==2903==    at 0x10000098D: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903==  Address 0x100b59cc9 is 3 bytes after a block of size 22 alloc'd
+==2903==    at 0x100099626: malloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x100000E6C: ft_strdup (in ./a.out)
+==2903==    by 0x1000007D6: file_reader (in ./a.out)
+==2903==    by 0x100000971: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903== 
+==2903== 
+==2903== 4 errors in context 6 of 10:
+==2903== Invalid read of size 1
+==2903==    at 0x1000009A8: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903==  Address 0x100b59cc8 is 2 bytes after a block of size 22 alloc'd
+==2903==    at 0x100099626: malloc (in /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==2903==    by 0x100000E6C: ft_strdup (in ./a.out)
+==2903==    by 0x1000007D6: file_reader (in ./a.out)
+==2903==    by 0x100000971: tetrimino_checker (in ./a.out)
+==2903==    by 0x100000C4F: main (in ./a.out)
+==2903== 
+--2903-- 
+--2903-- used_suppression:      5 OSX1012:19-Leak /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/default.supp:924 suppressed: 8,792 bytes in 5 blocks
+--2903-- used_suppression:      8 OSX1012:17-Leak /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/default.supp:906 suppressed: 3,872 bytes in 61 blocks
+--2903-- used_suppression:      3 OSX1012:16-Leak /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/default.supp:897 suppressed: 3,072 bytes in 48 blocks
+--2903-- used_suppression:     15 OSX1012:10-Leak /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/default.supp:839 suppressed: 2,000 bytes in 35 blocks
+--2903-- used_suppression:      4 OSX1012:18-Leak /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/default.supp:915 suppressed: 120 bytes in 4 blocks
+--2903-- used_suppression:      1 OSX1012:dyld-5 /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/default.supp:1283
+--2903-- used_suppression:      2 OSX1012:dyld-4 /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/default.supp:1275
+--2903-- used_suppression:      1 OSX1012:dyld-3 /Users/ahmcherk/.brew/Cellar/valgrind/3.15.0/lib/valgrind/default.supp:1267
+==2903== 
+==2903== ERROR SUMMARY: 16 errors from 10 contexts (suppressed: 12 from 12)

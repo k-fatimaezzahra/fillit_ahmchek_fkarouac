@@ -1,1 +1,1 @@
-valgrind --leak-check=yes ./a.out
+valgrind --leak-check=yes ./fillit main_checker.c
